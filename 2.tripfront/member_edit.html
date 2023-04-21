@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon" />
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="assets/css/member_edit.css" />
+    <title>Member</title>
+  </head>
+  
+  <body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="header d-flex align-items-center">
+      <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+        <a href="index.html" class="logo d-flex align-items-center">
+          <!-- Uncomment the line below if you also wish to use an image logo -->
+          <!-- <img src="assets/img/logo.png" alt=""> -->
+          <h1>Enjoy<span>Trip</span></h1>
+        </a>
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li><a href="tripsearch.html">지역별여행지</a></li>
+            <li><a href="my_trip.html">나의여행계획</a></li>
+            <li><a href="sample-inner-page.html">핫플자랑하기</a></li>
+            <li><a href="postWrite.html">여행정보공유</a></li>
+            <li class="dropdown">
+              <a href="#"
+                ><span><img src="/assets/img/icon/people-icon.png" alt="person_icon" /></span>
+                <i class="bi bi-chevron-down dropdown-indicator"></i
+              ></a>
+              <ul id="header_nav_confirm_on" style="display: block">
+                <li><a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#loginModal">로그인</a></li>
+                <li><a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#JoinModal">회원가입</a></li>
+              </ul>
+              <ul id="header_nav_confirm_off" style="display: none">
+                <li><a href="member_profile.html">회원정보</a></li>
+                <li><a href="#" class="btn" onclick="javascript:logout();">로그아웃</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <!-- .navbar -->
+
+        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+        <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      </div>
+    </header>
+    <!-- End Header -->
+
+    <div class="container rounded bg-white mt-5 mb-5">
+      <div class="row">
+        <div class="col-md-3 border-right">
+          <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+            <img
+              class="rounded-circle mt-5"
+              width="150px"
+              src="https://img.icons8.com/bubbles/100/000000/user.png"
+            /><span class="font-weight-bold">김싸피</span><span class="text-black-50">kimSsafy@ssafy.com</span
+            ><span> </span>
+          </div>
+        </div>
+        <div class="col-md-5 border-right">
+          <div class="p-3 py-5">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4 class="text-right">회원정보 설정</h4>
+            </div>
+            <div class="row mt-2">
+              <div class="col-md-12">
+                <label class="labels">이름</label
+                ><input type="text" class="form-control" placeholder="김싸피" value="" />
+              </div>
+              <!-- <div class="col-md-6">
+                <label class="labels">Surname</label
+                ><input type="text" class="form-control" value="" placeholder="surname" />
+              </div> -->
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-12">
+                <label class="labels">핸드폰 번호</label
+                ><input type="text" class="form-control" placeholder="010-1234-5678" value="" />
+              </div>
+              <div class="col-md-12">
+                <label class="labels">주소</label
+                ><input type="text" class="form-control" placeholder="강남구 역삼동" value="" />
+              </div>
+              <div class="col-md-12">
+                <label class="labels">이메일</label
+                ><input type="text" class="form-control" placeholder="kimSsafy@ssafy.com" value="" />
+              </div>
+              <div class="col-md-12">
+                <label class="labels">직업</label
+                ><input type="text" class="form-control" placeholder="여행가" value="" />
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-12">
+                <label class="labels">나라</label
+                ><input type="text" class="form-control" placeholder="대한민국" value="" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="mt-5 col-6">
+                <button class="btn btn-primary profile-button" type="button">저장</button>
+              </div>
+              <div class="mt-5 col-6">
+                <button class="btn btn-primary profile-button" type="button">회원 탈퇴</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-3 py-5">
+            <div class="d-flex justify-content-between align-items-center experience">
+              <span>자기 소개</span
+              ><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;나의 여행</span>
+            </div>
+            <br />
+            <div class="col-md-12">
+              <label class="labels">한줄 소개</label
+              ><input
+                type="text"
+                class="form-control"
+                placeholder="안녕하세요 여행을 좋아하는 김싸피입니다."
+                value=""
+              />
+            </div>
+            <br />
+            <div class="col-md-12">
+              <label class="labels">추가 사항</label
+              ><input type="text" class="form-control" placeholder="자유여행 선호" value="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-5 col-md-12 footer-info">
+            <a href="index.html" class="logo d-flex align-items-center">
+              <span>EnjoyTrip</span>
+            </a>
+            <p>
+              저희 EnjoyTrip은 잘 알려진 관광지가 아닌 나만의 특별한 장소를 사람들과 공유하고 
+              소개함으로써 자신이 겪었던 경험을 많은 사람들과 함께 나눌 수 있는 특별한 공간입니다. 
+              제주도, 강원도, 울릉도, 독도부터 서울까지! 생각지 못했던 곳에서
+              여러분이 꿈꾸는 여행을 찾으세요!
+            </p>
+            <div class="social-links d-flex mt-4">
+              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-6 footer-links">
+            <h4>서비스</h4>
+            <ul>
+              <li><a href="tripsearch.html">지역 별 여행지</a></li>
+              <li><a href="my_trip.html">나의 여행 계획</a></li>
+              <li><a href="sample-inner-page.html">핫플 자랑하기</a></li>
+              <li><a href="postWrite.html">여행정보 공유</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><a href="#">사이트소개</a></li>
+              <li><a href="#">개인정보처리방침</a></li>
+              <li><a href="#">이용약관</a></li>
+              <li><a href="#">오시는길</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+            <h4>Contact Us</h4>
+            <p>
+              class 20 (Seoul - Major)<br />
+              212 Teheran-ro<br />
+              Gangnam-gu, Seoul<br /><br />
+              <strong>Phone:</strong> 02-1234-5678<br />
+              <strong>Email:</strong> ssafy@ssafy.com<br />
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container mt-4">
+        <div class="copyright">
+          &copy; Copyright <strong><span>Impact</span></strong
+          >. All Rights Reserved
+        </div>
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/impact-bootstrap-business-website-template/ -->
+          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
+      </div>
+    </footer>
+    <!-- End Footer -->
+
+    <!-- Start modal -->
+    <!-- The loginModal -->
+    <div class="modal" id="loginModal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">로그인</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <form action="" name="login-form">
+              <div class="form-floating mb-3">
+                <input class="form-control" type="text" id="id" placeholder="ID" value="ssafy" />
+                <label class="form-label" for="id">ID</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input class="form-control" type="password" id="PassWord" placeholder="PASSWORD" value="1234" />
+                <label class="form-label" for="PassWord">password</label>
+              </div>
+            </form>
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button
+              class="btn btn-outline-primary"
+              type="button"
+              data-bs-dismiss="modal"
+              id="login_check"
+              onclick="javascript:login();"
+            >
+              로그인
+            </button>
+            <button
+              href="#"
+              class="btn btn-outline-success"
+              data-bs-toggle="modal"
+              id="Join"
+              data-bs-target="#JoinModal"
+            >
+              회원가입
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- The JoinModal -->
+    <div class="modal" id="JoinModal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">회원가입</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <form action="" name="login-form">
+              <div class="form-floating mb-3">
+                <input class="form-control" type="text" id="joinMemberName" placeholder="MEMBERNAME" />
+                <label class="form-label" for="MemberName">Name</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input class="form-control" type="text" id="joinid" placeholder="ID" />
+                <label class="form-label" for="id">ID</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input class="form-control" type="password" id="joinPassWord" placeholder="PASSWORD" />
+                <label class="form-label" for="PassWord">password</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input class="form-control" type="password" id="joinCheckPassWord" placeholder="CHECKPASSWORD" />
+                <label class="form-label" for="CheckPassWord">password 확인</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input class="form-control" type="text" id="joinE-mail" placeholder="E-MAIL" />
+                <label class="form-label" for="E-mail">E-mail</label>
+              </div>
+            </form>
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button class="btn btn-outline-success" type="button" data-bs-dismiss="modal" id="login-check" onclick="">
+              회원가입
+            </button>
+            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" id="Join" onclick="">
+              취소
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- End modal -->
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/memberCTRL.js"></script>
+  </body>
+</html>
