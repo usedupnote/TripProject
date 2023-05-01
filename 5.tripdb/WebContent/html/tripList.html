@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enjoy Trip</title>
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <link href="./assets/css/style.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" />
+  </head>
+  <body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top sub-header" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="./index.html">Enjoy Trip</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          Menu
+          <i class="fas fa-bars ms-1"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <!-- 로그인 전 -->
+          <ul id="registerMenu" class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+            <li class="nav-item"><a class="nav-link" href="notice.html">공지사항</a></li>
+            <li class="nav-item"><a class="nav-link" href="board.html">여행 후기</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#registerModal">회원가입</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">로그인</a>
+            </li>
+          </ul>
+          <!-- 로그인 후 -->
+          <ul id="loginMenu" class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+            <li class="nav-item"><a class="nav-link" href="notice.html">공지사항</a></li>
+            <li class="nav-item"><a class="nav-link" href="board.html">여행 후기</a></li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#" onclick="logout()">로그아웃</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="mypage.html">마이페이지</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--main-->
+    <section class="page-section container text-center">
+      <span class="text-center mt-5 h3" id="tripListTitle">우리 지역 여행지 검색</span>
+      <!-- 관광지 검색 start -->
+      <form class="my-5 row w-100 justify-content-center" onsubmit="return false;" role="search">
+        <select id="search-area" class="form-select me-2 rounded-4 col-3">
+          <option value="0" selected>검색 할 지역 선택</option>
+        </select>
+        <select id="search-content-id" class="form-select me-2 rounded-4 col-3">
+          <option value="0" selected>관광지 유형</option>
+          <option value="12">관광지</option>
+          <option value="14">문화시설</option>
+          <option value="15">축제공연행사</option>
+          <option value="25">여행코스</option>
+          <option value="28">레포츠</option>
+          <option value="32">숙박</option>
+          <option value="38">쇼핑</option>
+          <option value="39">음식점</option>
+        </select>
+        <input
+          id="search-keyword"
+          class="form-control me-2 rounded-4 col-4"
+          type="search"
+          placeholder="검색어"
+          aria-label="검색어"
+        />
+        <button id="btn-search" class="btn btn-outline-warning col-1" type="button">검색</button>
+      </form>
+      <!-- kakao map start -->
+      <div id="map" class="mt-3" style="width: 100%; height: 400px"></div>
+      <!-- kakao map end -->
+
+      <!-- 관광지 검색 결과 창-->
+      <div class="row mt-5">
+        <div id="resultBox" class="row" style="display: none"></div>
+      </div>
+    </section>
+
+    <!-- 로그인 modal start -->
+    <div
+      class="modal fade"
+      id="loginModal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">
+              <i class="bi bi-door-open text-info"> 로그인</i>
+            </h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <form name="login-form">
+              <div class="form-floating mb-3">
+                <input type="id" class="form-control" id="loginId" placeholder="Id" />
+                <label for="loginId">ID</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="loginPassword" placeholder="Password" />
+                <label for="loginPassword">Password</label>
+              </div>
+              <div class="p-1 mt-3"></div>
+            </form>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <a href="#" data-bs-toggle="modal" data-bs-target="#findModal" class="btn btn-outline-danger"
+              >비밀번호 찾기</a
+            >
+            <button onclick="login()" type="button" class="btn btn-outline-primary">로그인</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 로그인 modal end -->
+
+    <!-- 비밀번호찾기 modal start -->
+    <div
+      class="modal fade"
+      id="findModal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">
+              <i class="bi bi-door-open text-info"> 비밀번호 찾기</i>
+            </h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <form name="login-form">
+              <div class="form-floating mb-3">
+                <input type="id" class="form-control" id="floatingInput" placeholder="Id" />
+                <label for="floatingInput">아이디</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingPassword" placeholder="Email" />
+                <label for="floatingPassword">이메일</label>
+              </div>
+              <div class="p-1 mt-3"></div>
+            </form>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <div id="findAlert" class="w-100"></div>
+            <button id="findAlertButton" onclick="findPassword()" type="button" class="btn btn-outline-primary">
+              비밀번호 복구
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 비밀번호찾기 modal end -->
+
+    <!-- 회원가입 modal start -->
+      <div
+      class="modal fade"
+      id="registerModal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">
+              <i class="bi bi-door-open text-info"> 회원가입</i>
+            </h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div class="form-signin">
+              <div>
+                <form name="register-form" class="was-validated">
+                  <div class="form-floating mb-3">
+                    <input type="name" class="form-control" id="registerName" placeholder="이름" required />
+                    <label for="registerName">이름</label>
+                    <div class="invalid-feedback">이름을 입력하세요</div>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="id" class="form-control" id="registerId" placeholder="아이디" required />
+                    <label for="registerId">아이디</label>
+                    <div class="invalid-feedback">아이디를 입력하세요</div>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="registerPassword" placeholder="비밀번호" required />
+                    <label for="registerPassword">비밀번호</label>
+                    <div class="invalid-feedback">비밀번호를 입력하세요</div>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="registerCheckPassword"
+                      placeholder="비밀번호"
+                      required
+                    />
+                    <label for="registerCheckPassword">비밀번호 확인</label>
+                    <div class="invalid-feedback">비밀번호를 입력하세요</div>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="registerEmail" placeholder="이메일" required />
+                    <label for="registerEmail">이메일</label>
+                    <div class="invalid-feedback">이메일을 입력하세요</div>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="age" class="form-control" id="registerAge" placeholder="나이" required />
+                    <label for="registerAge">나이</label>
+                    <div class="invalid-feedback">나이를 입력하세요</div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer float-end">
+            <button onclick="register()" type="button" class="btn btn-outline-primary w-20">회원가입</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 회원가입 modal end -->
+
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=015c257de1297eba16854058edc4f4c6&libraries=services,clusterer,drawing"
+    ></script>
+    <script>
+      const serviceKey =
+        "x8HNFVASVWMiR3WenqDoQflqFPeBy9XMQ5kvBnPsJZCmaK4WF3ek%2Fa6l%2FTSW%2B4iInQrMZ6639neqzoSYjmZtqA%3D%3D";
+
+      // index page 로딩 후 전국의 시도 설정.
+      let areaUrl =
+        "https://apis.data.go.kr/B551011/KorService1/areaCode1?serviceKey=" +
+        serviceKey +
+        "&numOfRows=20&pageNo=1&MobileOS=ETC&MobileApp=AppTest&_type=json";
+
+      // fetch(areaUrl, { method: "GET" }).then(function (response) { return response.json() }).then(function (data) { makeOption(data); });
+      fetch(areaUrl, { method: "GET" })
+        .then((response) => response.json())
+        .then((data) => makeOption(data));
+
+      function makeOption(data) {
+        let areas = data.response.body.items.item;
+        // console.log(areas);
+        let sel = document.getElementById("search-area");
+        areas.forEach((area) => {
+          let opt = document.createElement("option");
+          opt.setAttribute("value", area.code);
+          opt.appendChild(document.createTextNode(area.name));
+
+          sel.appendChild(opt);
+        });
+      }
+
+      // 검색 버튼을 누르면..
+      // 지역, 유형, 검색어 얻기.
+      // 위 데이터를 가지고 공공데이터에 요청.
+      // 받은 데이터를 이용하여 화면 구성.
+      document.getElementById("btn-search").addEventListener("click", () => {
+        let searchUrl = `https://apis.data.go.kr/B551011/KorService1/searchKeyword1?serviceKey=${serviceKey}&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&_type=json&listYN=Y&arrange=A`;
+
+        let areaCode = document.getElementById("search-area").value;
+        let contentTypeId = document.getElementById("search-content-id").value;
+        let keyword = document.getElementById("search-keyword").value;
+
+        if (parseInt(areaCode)) searchUrl += `&areaCode=${areaCode}`;
+        if (parseInt(contentTypeId)) searchUrl += `&contentTypeId=${contentTypeId}`;
+        if (!keyword) {
+          alert("검색어 입력 필수!!!");
+          return;
+        } else searchUrl += `&keyword=${keyword}`;
+
+        fetch(searchUrl)
+          .then((response) => response.json())
+          .then((data) => makeList(data));
+      });
+
+      var positions; // marker 배열.
+      function makeList(data) {
+        document.querySelector("#resultBox").setAttribute("style", "display:block;");
+        // document.querySelector("table").setAttribute("style", "display: ;");
+        let trips = data.response.body.items.item;
+        let tripList = ``;
+        positions = [];
+        trips.forEach((area) => {
+          tripList += `
+          <div class="card mb-3" onclick="moveCenter(${area.mapy}, ${area.mapx});">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="${area.firstimage}" class="img-fluid rounded-start" alt="${area.title}">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">${area.title}</h5>
+                  <p class="card-text"><small class="text-muted">${area.addr1} ${area.addr2}</small></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          `;
+          let markerInfo = {
+            title: area.title,
+            latlng: new kakao.maps.LatLng(area.mapy, area.mapx),
+          };
+          positions.push(markerInfo);
+        });
+        document.getElementById("resultBox").innerHTML = tripList;
+        // document.getElementById("trip-list").innerHTML = tripList;
+        displayMarker();
+      }
+
+      // 카카오지도
+      var mapContainer = document.getElementById("map"), // 지도를 표시할 div
+        mapOption = {
+          center: new kakao.maps.LatLng(37.500613, 127.036431), // 지도의 중심좌표
+          level: 5, // 지도의 확대 레벨
+        };
+
+      // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+      var map = new kakao.maps.Map(mapContainer, mapOption);
+
+      function displayMarker() {
+        // 마커 이미지의 이미지 주소입니다
+        var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+
+        // 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
+        var bounds = new kakao.maps.LatLngBounds();
+
+        for (var i = 0; i < positions.length; i++) {
+          // 마커 이미지의 이미지 크기 입니다
+          var imageSize = new kakao.maps.Size(24, 35);
+
+          // 마커 이미지를 생성합니다
+          var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+          // 마커를 생성합니다
+          var marker = new kakao.maps.Marker({
+            map: map, // 마커를 표시할 지도
+            position: positions[i].latlng, // 마커를 표시할 위치
+            title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+            image: markerImage, // 마커 이미지
+          });
+
+          // LatLngBounds 객체에 좌표를 추가합니다
+          bounds.extend(positions[i].latlng);
+        }
+
+        // LatLngBounds 객체에 추가된 좌표들을 기준으로 지도의 범위를 재설정합니다
+        // 이때 지도의 중심좌표와 레벨이 변경될 수 있습니다
+        map.setBounds(bounds);
+
+        // 첫번째 검색 정보를 이용하여 지도 중심을 이동 시킵니다
+        //map.setCenter(positions[0].latlng);
+      }
+
+      function moveCenter(lat, lng) {
+        map.setCenter(new kakao.maps.LatLng(lat, lng));
+      }
+    </script>
+
+    <!-- Bootstrap core JS-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
+    <!-- Core theme JS-->
+    <script src="./assets/js/main.js"></script>
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> -->
+
+    <!--커스텀 js-->
+    <script type="text/javascript" src="./assets/js/login.js"></script>
+  </body>
+</html>

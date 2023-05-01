@@ -1,0 +1,60 @@
+﻿[관통]5.Database_PJT_v9_Trip_구현상세
+
+[EnjoyTrip] 
+http://enjoytrip.jaen.kr:9000/
+
+[Git프로젝트생성]
+tripdb
+
+
+전국관광지 정보
+한국관광공사_국문관광정보 서비스_GW 데이터
+https://www.data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15101578
+
+관광지 사진정보
+한국관광공사_관광사진정보 서비스_GW.
+(https://www.data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15101914)
+
+전국 전기차 충전소정보
+한국환경공단_전기자동차 충전소 정보
+(https://www.data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15076352)
+
+날씨정보
+지역별 날씨 정보
+(https://openweathermap.org/api)
+
+한국천문연구원_출몰시각 정보
+지역별 일출 일몰 정보
+(https://www.data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15012688)
+
+
+[기본기능]-60
+메인 페이지 및 메뉴 구성(10)            [ OK ]
+관광지 정보 데이터관리(30)              [ OK ]
+회원관리 정보 데이터 관리(20)           [ OK ]
+
+
+[추가기능]-20
+게시글 Hit(좋아요) 기능 추가 및 데이터 관리 (20)   [ OK ]
+추가 기능(10)                           [ OK ]
+
+
+[심화기능]-20
+맞춤 검색을 위한 Keyword 등록 및 관리 (팀별)(10)          [ OK ]
+게시판 데이터 관리(10)                  [ OK ]
+회원 등급에 따라 crud 가능한 게시판 구분 [ OK ]
+심화 기능(10)                           [ OK ]
+
+
+[산출물과 제출]
+EnjoyTrip DB를 구축합니다.
+프로젝트 최종적으로 제출해야 할 항목은
+- EnjoyTrip 수정된 요구사항 목록
+- EnjoyTrip ER Diagram(모델링 mwb 파일), Schema(DDL sql 파일) : sql은 sql폴더 만들고 여기에
+
+위 모든 내용을 하나의 프로젝트에 담아 
+0414 폴더에 
+팀원 중 가나다 순으로 빠른 이름의 팀원 한 분만 
+EnjoyTrip_DB_서울_20반_강호동_홍길동.zip으로 제출합니다.
+
+제출 후 MM으로 문자 주세요

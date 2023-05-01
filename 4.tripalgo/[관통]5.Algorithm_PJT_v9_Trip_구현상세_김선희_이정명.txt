@@ -1,0 +1,66 @@
+﻿[관통]5.Algo_PJT_v9_Trip_구현상세
+
+[EnjoyTrip] 
+http://enjoytrip.jaen.kr:9000/
+
+[Git프로젝트생성]
+tripalgo
+
+전국관광지 정보
+한국관광공사_국문관광정보 서비스_GW 데이터
+https://www.data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15101578
+
+관광지 사진정보
+한국관광공사_관광사진정보 서비스_GW.
+(https://www.data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15101914)
+
+전국 전기차 충전소정보
+한국환경공단_전기자동차 충전소 정보
+(https://www.data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15076352)
+
+날씨정보
+지역별 날씨 정보
+(https://openweathermap.org/api)
+
+한국천문연구원_출몰시각 정보
+지역별 일출 일몰 정보
+(https://www.data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15012688)
+
+
+[기본기능]-60
+알고리즘 2개 기능 구현
+1. Hash 함수를 통한 비밀번호 보안    [ OK ]
+2. Tim sort를 이용한 게시글 정렬      [ OK ]
+
+
+[기획기능]-10
+알고리즘 2개 기능 구현 관련 기획서 제출
+1. Hash 함수를 통한 비밀번호 보안    [ OK ]
+2. Tim sort를 이용한 게시글 정렬      [ OK ]
+
+
+[추가기능]-30
+추가 알고리즘 및 기획서 개당 15점
+3. 다익스트라를 통한 최적 경로 추천 - 기획서  [ OK  ]
+4.                          [ NO ]
+
+
+[산출물과 제출]
+프로젝트 최종적으로 제출해야 할 항목은 
+- EnjoyTrip 알고리즘 적용부분과 적용 내용을 명시한 기획서(기획서 예시 참고).doc - 기획, 추가기능 해당
+- 알고리즘을 적용한 EnjoyTrip MVC Project 
+
+- 기존 EnjoyTrip 프로젝트 구현시 알고리즘이 필요한 곳을 찾고, 알맞은 알고리즘을 구현하여 추가한다.  
+ 알고리즘은 2개 이상 적용한다.  
+- 예시: 여행계획에서 관광지별 최단경로  
+ 적용 알고리즘에 대해 별도의 기획서를 작성하여 제출한다.  
+- 기획서는 6. 기획서 예시를 참고한다. 
+
+- SQL파일들은 sql or res 폴더에 저장
+- 제출하는 파일들은 프로젝트 root 폴더에 제출
+
+
+위 모든 내용을 하나의 프로젝트에 담아
+0411 폴더에 
+팀원 중 가나다 순으로 빠른 이름의 팀원 한 분만 
+EnjoyTrip_Algo_서울_20반_강호동_홍길동.zip 으로 제출합니다.

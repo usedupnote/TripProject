@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Enjoy Trip</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <link href="./assets/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" />
+  </head>
+  <body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="#page-top">Enjoy Trip</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          Menu
+          <i class="fas fa-bars ms-1"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <!-- 로그인 전 -->
+          <ul id="registerMenu" class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+            <li class="nav-item"><a class="nav-link" href="notice.html">공지사항</a></li>
+            <li class="nav-item"><a class="nav-link" href="board.html">여행 후기</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#registerModal">회원가입</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">로그인</a>
+            </li>
+          </ul>
+          <!-- 로그인 후 -->
+          <ul id="loginMenu" class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+            <li class="nav-item"><a class="nav-link" href="notice.html">공지사항</a></li>
+            <li class="nav-item"><a class="nav-link" href="board.html">여행 후기</a></li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#" onclick="logout()">로그아웃</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="mypage.html">마이페이지</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Masthead-->
+    <header class="masthead">
+      <div class="container">
+        <!-- <div class="masthead-subheading">함께 떠나요!</div> -->
+        <!-- <div class="masthead-heading text-uppercase">It's Nice To Meet You</div> -->
+        <a class="btn btn-secondary btn-xl rounded-5 w-100 text-center" href="./tripList.html">
+          <i class="bi bi-search"></i> 어디든지 언제든지
+        </a>
+      </div>
+    </header>
+    <!-- Portfolio Grid-->
+    <section class="page-section bg-light" id="portfolio">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-heading text-uppercase">지금 가장 핫한🔥 여행지</h2>
+          <h3 class="section-subheading text-muted">여행 후기를 통해 찾아보세요</h3>
+        </div>
+        <a class="btn btn-outline-warning d-inline float-end mb-3" href="board.html">후기 더보기</a>
+        <div class="row" style="clear: both">
+          <div class="col-lg-4 col-sm-6 mb-4">
+            <!-- Portfolio item 1-->
+            <div class="portfolio-item">
+              <a class="portfolio-link" href="view.html">
+                <div class="portfolio-hover">
+                  <div class="portfolio-hover-content"><i class="bi bi-plus-lg fs-1"></i></div>
+                </div>
+                <img class="img-fluid" src="./assets/img/reveiw1.jpg" alt="미국 국립공원" />
+              </a>
+              <div class="portfolio-caption">
+                <div class="portfolio-caption-heading">자연과 함께</div>
+                <div class="portfolio-caption-subheading text-muted">미국 아치스 국립공원</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6 mb-4">
+            <!-- Portfolio item 2-->
+            <div class="portfolio-item">
+              <a class="portfolio-link" href="view.html">
+                <div class="portfolio-hover">
+                  <div class="portfolio-hover-content"><i class="bi bi-plus-lg fs-1"></i></div>
+                </div>
+                <img class="img-fluid" src="./assets/img/reveiw2.jpg" alt="알래스카" />
+              </a>
+              <div class="portfolio-caption">
+                <div class="portfolio-caption-heading">알래스카</div>
+                <div class="portfolio-caption-subheading text-muted">알래스카 스노우 캡 마운틴</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6 mb-4">
+            <!-- Portfolio item 3-->
+            <div class="portfolio-item">
+              <a class="portfolio-link" href="view.html">
+                <div class="portfolio-hover">
+                  <div class="portfolio-hover-content"><i class="bi bi-plus-lg fs-1"></i></div>
+                </div>
+                <img class="img-fluid" src="./assets/img/reveiw3.jpg" alt="한국 용인" />
+              </a>
+              <div class="portfolio-caption">
+                <div class="portfolio-caption-heading">환상의 나라</div>
+                <div class="portfolio-caption-subheading text-muted">에버랜드</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6 mb-4">
+            <!-- Portfolio item 1-->
+            <div class="portfolio-item">
+              <a class="portfolio-link" href="view.html">
+                <div class="portfolio-hover">
+                  <div class="portfolio-hover-content"><i class="bi bi-plus-lg fs-1"></i></div>
+                </div>
+                <img class="img-fluid" src="./assets/img/reveiw1.jpg" alt="미국 국립공원" />
+              </a>
+              <div class="portfolio-caption">
+                <div class="portfolio-caption-heading">자연과 함께</div>
+                <div class="portfolio-caption-subheading text-muted">미국 아치스 국립공원</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6 mb-4">
+            <!-- Portfolio item 2-->
+            <div class="portfolio-item">
+              <a class="portfolio-link" href="view.html">
+                <div class="portfolio-hover">
+                  <div class="portfolio-hover-content"><i class="bi bi-plus-lg fs-1"></i></div>
+                </div>
+                <img class="img-fluid" src="./assets/img/reveiw2.jpg" alt="알래스카" />
+              </a>
+              <div class="portfolio-caption">
+                <div class="portfolio-caption-heading">알래스카</div>
+                <div class="portfolio-caption-subheading text-muted">스노우 캡 마운틴</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6 mb-4">
+            <!-- Portfolio item 3-->
+            <div class="portfolio-item">
+              <a class="portfolio-link" href="view.html">
+                <div class="portfolio-hover">
+                  <div class="portfolio-hover-content"><i class="bi bi-plus-lg fs-1"></i></div>
+                </div>
+                <img class="img-fluid" src="./assets/img/reveiw3.jpg" alt="한국 용인" />
+              </a>
+              <div class="portfolio-caption">
+                <div class="portfolio-caption-heading">환상의 나라</div>
+                <div class="portfolio-caption-subheading text-muted">에버랜드</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer-->
+    <footer class="footer py-4">
+      <div class="container">
+        <div class="row align-items-center justify-content-between">
+          <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2022</div>
+          <div class="col-lg-4 text-lg-end">
+            <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
+            <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- 로그인 modal start -->
+    <div
+      class="modal fade"
+      id="loginModal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">
+              <i class="bi bi-door-open text-info"> 로그인</i>
+            </h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <form name="login-form">
+              <div class="form-floating mb-3">
+                <input type="id" class="form-control" id="loginId" placeholder="Id" />
+                <label for="loginId">ID</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="loginPassword" placeholder="Password" />
+                <label for="loginPassword">Password</label>
+              </div>
+              <div class="p-1 mt-3"></div>
+            </form>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <a href="#" data-bs-toggle="modal" data-bs-target="#findModal" class="btn btn-outline-danger"
+              >비밀번호 찾기</a
+            >
+            <button
+              onclick="login()"
+              type="button"
+              class="btn btn-outline-primary"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            >
+              로그인
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 로그인 modal end -->
+
+    <!-- 비밀번호찾기 modal start -->
+    <div
+      class="modal fade"
+      id="findModal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">
+              <i class="bi bi-door-open text-info"> 비밀번호 찾기</i>
+            </h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <form name="login-form" class="was-validated">
+              <div class="form-floating mb-3">
+                <input type="id" class="form-control" id="floatingInput" placeholder="Id" required />
+                <label for="floatingInput">아이디</label>
+                <div class="invalid-feedback">아이디를 입력하세요</div>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingPassword" placeholder="Email" required />
+                <label for="floatingPassword">이메일</label>
+                <div class="invalid-feedback">이메일을 입력하세요</div>
+              </div>
+              <div class="p-1 mt-3"></div>
+            </form>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <div id="findAlert" class="w-100"></div>
+            <button id="findAlertButton" onclick="findPassword()" type="button" class="btn btn-outline-primary">
+              비밀번호 복구
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 비밀번호찾기 modal end -->
+
+    <!-- 회원가입 modal start -->
+    <div
+      class="modal fade"
+      id="registerModal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">
+              <i class="bi bi-door-open text-info"> 회원가입</i>
+            </h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div class="form-signin">
+              <div>
+                <form name="register-form" class="was-validated">
+                  <div class="form-floating mb-3">
+                    <input type="name" class="form-control" id="registerName" placeholder="이름" required />
+                    <label for="registerName">이름</label>
+                    <div class="invalid-feedback">이름을 입력하세요</div>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="id" class="form-control" id="registerId" placeholder="아이디" required />
+                    <label for="registerId">아이디</label>
+                    <div class="invalid-feedback">아이디를 입력하세요</div>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="registerPassword" placeholder="비밀번호" required />
+                    <label for="registerPassword">비밀번호</label>
+                    <div class="invalid-feedback">비밀번호를 입력하세요</div>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="registerCheckPassword"
+                      placeholder="비밀번호"
+                      required
+                    />
+                    <label for="registerCheckPassword">비밀번호 확인</label>
+                    <div class="invalid-feedback">비밀번호를 입력하세요</div>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="registerEmail" placeholder="이메일" required />
+                    <label for="registerEmail">이메일</label>
+                    <div class="invalid-feedback">이메일을 입력하세요</div>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="age" class="form-control" id="registerAge" placeholder="나이" required />
+                    <label for="registerAge">나이</label>
+                    <div class="invalid-feedback">나이를 입력하세요</div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer float-end">
+            <button onclick="register()" type="button" class="btn btn-outline-primary w-20">회원가입</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 회원가입 modal end -->
+
+    <!-- Bootstrap core JS-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
+    <!-- Core theme JS-->
+    <script src="./assets/js/main.js"></script>
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+    <!--커스텀 js-->
+    <script type="text/javascript" src="./assets/js/login.js"></script>
+  </body>
+</html>
