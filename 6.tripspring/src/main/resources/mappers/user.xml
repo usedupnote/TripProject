@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.enjoytrip.model.repo.UserRepo">
+	 
+	<!-- 사용자 정보를 저장한다.(신규가입) -->
+	<insert id="joinUser">
+		INSERT INTO user 
+		VALUES (#{email},#{password},#{img},#{gender},#{grade_id},#{nickname},#{age},#{join_at},#{last_login});
+	</insert>
+	
+	<!-- select user 필오없지 않을까? 밑의 기능과 중복 -->
+	
+	<!-- 모든 사용자 정보를 검색한다. id는 dao클래스의 메소드 이름과 일치시킨다. -->
+	<select id="listUser" resultType="User">	
+		<!-- *대신 개인정보 제외한 select  -->
+		SELECT * FROM user;
+	</select>
+	
+	<!-- Emain로 사용자 정보를 검색한다. id는 dao클래스의 메소드 이름과 일치시킨다. -->
+	<select id="listUserByEmail" resultType="User">
+		SELECT * FROM user
+		<if test="key!='none'">
+			WHERE email LIKE CONCAT('%',#{email},'%');
+		</if>
+	</select>
+	
+	<update id="updateUser">
+		UPDATE user
+		<trim prefix="set" suffixOverrides=",">
+			<if test="nickname != null">nickname = #{nickname},</if>
+		</trim>
+		WHERE email = #{email};
+	</update>
+	
+	<delete id="deleteUser">
+		DELETE FROM user
+		WHERE email = #{email};
+	</delete>
+	
+	<!-- 로그인 기능 추가 -->
+<!-- 	<select id="loginUser" resultType="User">	
+		SELECT * 
+		FROM user
+		WHERE email = #{email}
+		and password = #{password};
+	</select> -->
+	
+	
+</mapper>

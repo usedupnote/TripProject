@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.enjoytrip.model.repo.AccommodationRepo">
+	 
+	 <!-- 
+	 
+	 DB에 넣은 데이터 코드
+	 INSERT INTO accommodations (`name`, `description`, `address`, `phone_number_1`, `phone_number_2`, `phone_number_3`, `email`)
+			VALUES  ("ssafyTrip","ssafyTrip_description","싸피특별시 싸피구","010","1234","5678","ssafy@ssafy.com"),
+					("가경재 [한국관광 품질인증/Korea Quality]","ssafyTrip_description1","경상북도 안동시 하회남촌길 69-5","054","855","8552","-"),
+					("가락관광호텔","ssafyTrip_description2","서울특별시 송파구 송파대로28길 5 가락동","02","400","6641","-"),
+					("가락청","ssafyTrip_description3","전라북도 전주시 완산구 한지길 68 풍남동3가","033","562","1665","-"),
+					("가람나무","ssafyTrip_description4","경기도 파주시 소라지로327번길 126-21 송촌동","031","400","6641","-"),
+					("가름게스트하우스","ssafyTrip_description5","제주특별자치도 서귀포시 법환하로9번길 10","064","658","7700","-"),
+					("가람초연재[한국관광 품질인증/Korea Quality]","ssafyTrip_description6","경상북도 안동시 풍천면 하회종가길 76-6 풍천면","010","3849","7542","-");
+						
+	 
+	  -->
+
+	<!-- 사용자 정보를 저장한다.(신규가입) -->
+	<insert id="joinAccommodation">
+		INSERT INTO accommodations (`name`, `description`, `address`, `phone_number_1`, `phone_number_2`, `phone_number_3`, `email`)
+		VALUES (#{name},#{description},#{address},#{phoneNumber1},#{phoneNumber2},#{phoneNumber3},#{email});
+	</insert>
+	
+	<!-- 모든 여행지 정보를 검색한다. id는 dao클래스의 메소드 이름과 일치시킨다. -->
+	<select id="listAccommodation" resultType="Accommodation">	
+		SELECT 
+			id AS id,
+			name AS name,
+			description AS description,
+			address AS address,
+			phone_number_1 AS phoneNumber1,
+			phone_number_2 AS phoneNumber2,
+			phone_number_3 AS phoneNumber3,
+			email AS email
+		FROM accommodations;
+	</select>
+	
+	<!-- Emain로 사용자 정보를 검색한다. id는 dao클래스의 메소드 이름과 일치시킨다. -->
+	<select id="listAccommodationById" resultType="Accommodation">
+		SELECT
+			id AS id,
+			name AS name,
+			description AS description,
+			address AS address,
+			phone_number_1 AS phoneNumber1,
+			phone_number_2 AS phoneNumber2,
+			phone_number_3 AS phoneNumber3,
+			email AS email
+		FROM accommodations
+		WHERE id = #{id};
+	</select>
+	
+	<update id="updateAccommodation">
+		UPDATE accommodations
+		<trim prefix="set" suffixOverrides=",">
+			<if test="name != null">name = #{name},</if>
+			<if test="description != null">description = #{description},</if>
+			<if test="address != null">address = #{address},</if>
+			<if test="phoneNumber1 != null">phone_number_1 = #{phoneNumber1},</if>
+			<if test="phoneNumber2 != null">phone_number_2 = #{phoneNumber2},</if>
+			<if test="phoneNumber3 != null">phone_number_3 = #{phoneNumber3},</if>
+			<if test="email != null">email = #{email},</if>
+		</trim>
+		WHERE id = #{id};
+	</update>
+	
+	<delete id="deleteAccommodation">
+		DELETE FROM accommodations
+		WHERE id = #{id};
+	</delete>
+</mapper>

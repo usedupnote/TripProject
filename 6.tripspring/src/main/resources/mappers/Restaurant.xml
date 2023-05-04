@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.enjoytrip.model.repo.RestaurantRepo">
+	 
+	<!-- 사용자 정보를 저장한다.(신규가입) -->
+	<insert id="joinRestaurant">
+		INSERT INTO restaurants (`name`, `description`, `address`, `phone_number_1`, `phone_number_2`, `phone_number_3`)
+		VALUES (#{name},#{description},#{address},#{phoneNumber1},#{phoneNumber2},#{phoneNumber3});
+	</insert>
+	
+	<!-- 모든 여행지 정보를 검색한다. id는 dao클래스의 메소드 이름과 일치시킨다. -->
+	<select id="listRestaurant" resultType="Restaurant">	
+		SELECT 
+			id AS id,
+			name AS name,
+			description AS description,
+			address AS address,
+			phone_number_1 AS phoneNumber1,
+			phone_number_2 AS phoneNumber2,
+			phone_number_3 AS phoneNumber3
+		FROM restaurants;
+	</select>
+	
+	<!-- Emain로 사용자 정보를 검색한다. id는 dao클래스의 메소드 이름과 일치시킨다. -->
+	<select id="listRestaurantById" resultType="Restaurant">
+		SELECT
+			id AS id,
+			name AS name,
+			description AS description,
+			address AS address,
+			phone_number_1 AS phoneNumber1,
+			phone_number_2 AS phoneNumber2,
+			phone_number_3 AS phoneNumber3
+		FROM restaurants
+		WHERE id = #{id};
+	</select>
+	
+	<update id="updateRestaurant">
+		UPDATE restaurants
+		<trim prefix="set" suffixOverrides=",">
+			<if test="name != null">name = #{name},</if>
+			<if test="description != null">description = #{description},</if>
+			<if test="address != null">address = #{address},</if>
+			<if test="phoneNumber1 != null">phone_number_1 = #{phoneNumber1},</if>
+			<if test="phoneNumber2 != null">phone_number_2 = #{phoneNumber2},</if>
+			<if test="phoneNumber3 != null">phone_number_3 = #{phoneNumber3},</if>
+		</trim>
+		WHERE id = #{id};
+	</update>
+	
+	<delete id="deleteRestaurant">
+		DELETE FROM restaurants
+		WHERE id = #{id};
+	</delete>
+</mapper>
