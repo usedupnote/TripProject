@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.enjoytrip.model.repo.UserRepo">
+	 
+	<!-- 사용자 정보를 저장한다.(신규가입) -->
+	<insert id="createUser">
+		INSERT INTO USER(email, password, name, img, gender, grade_id, nickname, age)
+		VALUES (#{email},#{password},#{name},#{img},#{gender},#{grade_id},#{nickname},#{age});
+	</insert>
+	
+	<!-- 모든 사용자 정보를 검색한다. id는 dao클래스의 메소드 이름과 일치시킨다. -->
+	<select id="selectAllUser" resultType="User">	
+		<!-- *대신 개인정보 제외한 select  -->
+		SELECT USER.*, GRADE.grade AS grade
+		FROM USER INNER JOIN GRADE
+		ON USER.grade_id = GRADE.id;
+	</select>
+	
+	<!-- Email로 사용자 정보를 검색한다. id는 dao클래스의 메소드 이름과 일치시킨다. -->
+	<select id="selectUserByEmail" resultType="User">
+		SELECT USER.*, GRADE.grade AS grade
+		FROM USER INNER JOIN GRADE
+		ON USER.grade_id = GRADE.id
+		WHERE email = #{email};
+	</select>
+	
+	<update id="updateUser">
+		UPDATE user
+		<trim prefix="set" suffixOverrides=",">
+			<if test="name != null">name = #{name},</if>
+			<if test="img != null">img = #{img},</if>
+			<if test="gender != null">gender = #{gender},</if>
+			<if test="grade_id != null">grade_id = #{grade_id},</if>
+			<if test="nickname != null">nickname = #{nickname},</if>
+			<if test="age != null">age = #{age},</if>
+		</trim>
+		WHERE email = #{email};
+	</update>
+	
+	<delete id="deleteUser">
+		DELETE FROM user
+		WHERE email = #{email};
+	</delete>
+	
+</mapper>

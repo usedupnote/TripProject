@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.enjoytrip.model.repo.BoardRepo">
+
+	<insert id="insert">
+		INSERT INTO `board` (`user_email`, `title`, `content`, `board_category_id`) VALUES (#{userEmail}, #{title}, #{content}, #{boardCategoryId});
+	</insert>
+	<update id="update">
+		UPDATE `board`
+		<trim prefix="set" suffixOverrides=",">
+		<if test="title != null">title = #{title},</if>
+		<if test="content != null">content = #{content},</if>
+		<if test="updateTime != null">update_time = #{updateTime},</if>
+		</trim>
+		WHERE (`id` = #{id});
+	</update>
+	<update id="updateViewCount">
+		UPDATE `board` SET `view_count` = `view_count` + 1 WHERE (`id` = #{id});
+	</update>
+	<delete id="delete">
+		DELETE FROM `board` WHERE (`id` = #{id});
+	</delete>
+	<select id="select" resultType="Board">
+		select id AS id, 
+			user_email AS userEmail, 
+			title AS title, 
+			content AS content, 
+			create_time AS createTime, 
+			update_time AS updateTime, 
+			view_count AS viewCount,
+			board_category_id AS boardCategoryId
+		from `board` where (`id` = #{id});
+	</select>
+	<select id="selectAll" resultType="Board">
+		select 
+			id AS id, 
+			user_email AS userEmail, 
+			title AS title, 
+			content AS content, 
+			create_time AS createTime, 
+			update_time AS updateTime, 
+			view_count AS viewCount,
+			board_category_id AS boardCategoryId
+		from `board`
+		order by `id` DESC;
+	</select>
+	<select id="selectBoardByCategory" resultType="Board">
+		select 
+			id AS id, 
+			user_email AS userEmail, 
+			title AS title, 
+			content AS content, 
+			create_time AS createTime, 
+			update_time AS updateTime, 
+			view_count AS viewCount,
+			board_category_id AS boardCategoryId
+		from `board`
+		where (`board_category_id` = #{boardCategoryId})
+		order by `id` DESC;
+	</select>
+	
+	
+	<!-- <select id="getAllBoardStar" resultType="Board">
+		게시글이 가진 모든 star 갯수를 가지고 오기	
+	</select> -->
+	
+	<!-- 모든 boar에 user 가 체크한 star 붙어서 가지고 오기 -->
+	<select id="getStaredBoardByUserEmail" resultType="Board">
+		select 
+			board.id AS id, 
+			board.user_email AS boardUserEmail, 
+			board.title AS title, 
+			board.content AS content, 
+			board.create_time AS createTime, 
+			board.update_time AS updateTime, 
+			board.view_count AS viewCount,
+			board.board_category_id AS boardCategoryId,
+			star.user_email AS starUserEmail
+		from `board` left join (
+			select *
+		    from `star`
+		    where star.user_email = "0@0"
+		) star
+		on board.id = star.board_id;
+	</select>
+	
+	<!-- 유저가 star 체크한 모든 board 가지고 오기 -->
+	<select id="getAllStaredBoardByUserEmail" resultType="Board">
+		select 
+			board.id AS id, 
+			board.user_email AS boardUserEmail, 
+			board.title AS title, 
+			board.content AS content, 
+			board.create_time AS createTime, 
+			board.update_time AS updateTime, 
+			board.view_count AS viewCount,
+			board.board_category_id AS boardCategoryId,
+			star.user_email AS starUserEmail
+		from `board` right join (
+			select *
+		    from `star`
+		    where star.user_email = #{userEmail}
+		) star
+		on board.id = star.board_id;
+	</select>
+</mapper>

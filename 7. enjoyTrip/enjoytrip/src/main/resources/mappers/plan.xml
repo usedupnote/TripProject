@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.enjoytrip.model.repo.PlanRepo">
+	 
+	<!-- 사용자 정보를 저장한다.(신규가입) -->
+	<insert id="insertPlan">
+		INSERT INTO plan(user_email, navi_info)
+		VALUES (#{userEmail},#{naviInfo});
+	</insert>
+	
+	<!-- Email로 사용자 정보를 검색한다. id는 dao클래스의 메소드 이름과 일치시킨다. -->
+	<select id="selectPlansByEmail" resultType="Plan">
+		SELECT id AS id, user_email AS userEmail, navi_info AS naviInfo 
+		FROM plan
+		WHERE user_email = #{userEmail};
+	</select>
+	
+	<delete id="deletePlan">
+		DELETE FROM plan
+		WHERE id = #{id};
+	</delete>
+	
+</mapper>

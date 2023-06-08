@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.enjoytrip.model.repo.AttractionRepo">
+	 
+	<!-- 
+	 
+	 DB에 넣은 데이터 코드
+	INSERT INTO attractions  (`name`, `description`, `phone_number_1`, `phone_number_2`, `phone_number_3`, `business_hours`)
+		VALUES  ("ssafyTrip","ssafyTrip_description","010","1234","5678","10:00~17:00")
+				("ssafyTrip1","ssafyTrip_description1","010","1111","1111","10:00~15:00"),
+				("ssafyTrip2","ssafyTrip_description2","010","2222","2222","11:00~16:00"),
+				("ssafyTrip3","ssafyTrip_description3","010","3333","3333","12:00~17:00"),
+				("ssafyTrip4","ssafyTrip_description4","010","4444","4444","13:00~18:00"),
+				("ssafyTrip5","ssafyTrip_description5","010","5555","5555","14:00~19:00");
+	  -->
+	 
+	<!-- 사용자 정보를 저장한다.(신규가입) -->
+	<insert id="joinAttraction">
+		INSERT INTO attractions (`name`, `description`, `phone_number_1`, `phone_number_2`, `phone_number_3`, `business_hours`)
+		VALUES (#{name},#{description},#{phoneNumber1},#{phoneNumber2},#{phoneNumber3},#{buissnessHours});
+	</insert>
+	
+	<!-- 모든 여행지 정보를 검색한다. id는 dao클래스의 메소드 이름과 일치시킨다. -->
+	<select id="listAttraction" resultType="Attraction">	
+	<!-- 	SELECT 
+			id AS id,
+			name AS name,
+			description AS description,
+			phone_number_1 AS phoneNumber1,
+			phone_number_2 AS phoneNumber2,
+			phone_number_3 AS phoneNumber3,
+			business_hours AS buissnessHours
+		FROM attractions; -->
+		
+		SELECT 
+			id AS id,
+			name AS name,
+			description AS description,
+			phone_number_1 AS phoneNumber1,
+			phone_number_2 AS phoneNumber2,
+			phone_number_3 AS phoneNumber3
+		FROM attractions	
+		UNION ALL
+		SELECT 
+			id AS id,
+			name AS name,
+			description AS description,
+			phone_number_1 AS phoneNumber1,
+			phone_number_2 AS phoneNumber2,
+			phone_number_3 AS phoneNumber3
+		FROM accommodations
+		UNION ALL
+		SELECT 
+			id AS id,
+			name AS name,
+			description AS description,
+			phone_number_1 AS phoneNumber1,
+			phone_number_2 AS phoneNumber2,
+			phone_number_3 AS phoneNumber3
+		FROM restaurants;
+	</select>
+	
+	<!-- id로 사용자 정보를 검색한다. id는 dao클래스의 메소드 이름과 일치시킨다. -->
+	<select id="listAttractionById" resultType="Attraction">
+		SELECT
+			id AS id,
+			name AS name,
+			description AS description,
+			phone_number_1 AS phoneNumber1,
+			phone_number_2 AS phoneNumber2,
+			phone_number_3 AS phoneNumber3,
+			business_hours AS buissnessHours
+		FROM attractions
+		WHERE id = #{id};
+	</select>
+	
+	<!-- Name로 사용자 정보를 검색한다. id는 dao클래스의 메소드 이름과 일치시킨다. -->
+	<select id="listAttractionByName" resultType="Attraction">
+		SELECT
+			id AS id,
+			name AS name,
+			description AS description,
+			phone_number_1 AS phoneNumber1,
+			phone_number_2 AS phoneNumber2,
+			phone_number_3 AS phoneNumber3,
+			business_hours AS buissnessHours
+		FROM attractions
+		WHERE name LIKE CONCAT("%", #{name}, "%"); <!-- 다중으로 가져오는 것 -->
+	</select>
+	
+	<update id="updateAttraction">
+		UPDATE attractions
+		<trim prefix="set" suffixOverrides=",">
+			<if test="name != null">name = #{name},</if>
+			<if test="description != null">description = #{description},</if>
+			<if test="phoneNumber1 != null">phone_number_1 = #{phoneNumber1},</if>
+			<if test="phoneNumber2 != null">phone_number_2 = #{phoneNumber2},</if>
+			<if test="phoneNumber3 != null">phone_number_3 = #{phoneNumber3},</if>
+			<if test="buissnessHours != null">business_hours = #{buissnessHours},</if>
+		</trim>
+		WHERE id = #{id};
+	</update>
+	
+	<delete id="deleteAttraction">
+		DELETE FROM attractions
+		WHERE id = #{id};
+	</delete>
+</mapper>

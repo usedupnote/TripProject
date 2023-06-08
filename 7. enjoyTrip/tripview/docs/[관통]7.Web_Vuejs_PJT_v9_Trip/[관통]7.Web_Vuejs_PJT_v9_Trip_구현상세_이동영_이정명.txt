@@ -1,0 +1,50 @@
+﻿[관통]7.Web_Vuejs_PJT_v9_Trip_구현상세
+
+[EnjoyTrip] 
+http://enjoytrip.jaen.kr:9000/
+
+[Git프로젝트생성]
+tripvue(프론트), triprest(서버)
+
+
+[기본기능]-75
+1.QnA 게시판 Vue를 적용한 웹페이지(40)
+-게시글 목록(10)                        [ OK / ING / NO ]
+-게시글 등록(10)                        [ OK / ING / NO ]
+-게시글 수정(10)                        [ OK / ING / NO ]
+-게시글 상세 검색(10)                   [ OK / ING / NO ]
+2.서버측 구현(35)
+-게시글 등록(10)                        [ OK / ING / NO ]
+-게시글 수정(5)                         [ OK / ING / NO ]
+-게시글 삭제(5)                         [ OK / ING / NO ]
+-게시글 상세검색(5)                     [ OK / ING / NO ]
+-게시글 목록(10)                        [ OK / ING / NO ]
+
+
+[추가기능]-10+
+나만의 여행계획 데이터 관리(팀별)(10)   [ OK / ING / NO ]
+추가 기능(10)                           [ OK / ING / NO ]
+
+
+[심화기능]-15+
+HotPlace 데이터 관리(팀별)(15)          [ OK / ING / NO ]
+심화 기능(10)                           [ OK / ING / NO ]
+
+
+[산출물과 제출]
+EnjoyTrip 서버를 구축합니다.
+프로젝트 최종적으로 제출해야 할 항목은
+- EnjoyTrip 개선된 요구사항 목록
+- EnjoyTrip 구현한 Source와 실행 화면 캡처
+- SQL파일들은 sql폴더를 생성 후 여기에 저장
+
+위 모든 내용을 하나의 프로젝트에 담아 
+0517 폴더에 
+팀원 중 가나다 순으로 빠른 이름의 팀원 한 분만 
+EnjoyTrip_Vue_서울_20반_강호동_홍길동.zip으로 제출합니다.
+제출시
+(1) .git 폴더
+(2) node_modules 폴더
+는 삭제 후 압축하세요!
+
+제출 후 MM으로 문자 주세요

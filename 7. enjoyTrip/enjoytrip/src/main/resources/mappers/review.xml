@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.enjoytrip.model.repo.ReviewRepo">
+	
+	<insert id="insertReview">
+		INSERT INTO place_review (`review`, `place_id`, `user_email`)
+		VALUES (#{review},#{placeId}, #{userEmail});
+	</insert>
+	
+	<select id="selectReviewsByID" resultType="com.ssafy.enjoytrip.dto.Review">
+		SELECT id AS id, place_id AS placeId, review as review, user.email as userEmail, user.nickname as userNickName, created_at AS createdAt
+		FROM place_review
+		INNER JOIN user
+		ON place_review.user_email = user.email 
+		WHERE place_id = #{id}
+		ORDER BY createdAt DESC;
+	</select>
+	
+</mapper>

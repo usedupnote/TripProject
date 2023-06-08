@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.enjoytrip.model.repo.StarRepo">
+
+	<insert id="createStar">
+		INSERT INTO `star` (`board_id`, `user_email`) VALUES (#{board_id}, #{userEmail});
+	</insert>
+	
+	<delete id="deleteStar">
+		DELETE FROM `star` WHERE (`board_id` = #{board_id} and `user_email` = #{userEmail});
+	</delete>
+	
+	<select id="selectAllByEmail" resultType="Star">
+		select 
+			board_id AS board_id,
+			user_email AS userEmail
+		from `star` where (`user_email` = #{userEmail});
+	</select>
+	<select id="selectAllByBoardId" resultType="Star">
+		select 
+			board_id AS board_id, 
+			user_email AS userEmail
+		from `star` where (`board_id` = #{board_id});
+	</select>
+	
+	<select id="selectAll" resultType="Star">
+		select 
+			board_id AS board_id, 
+			user_email AS userEmail
+		from `star`;
+	</select>
+</mapper>
