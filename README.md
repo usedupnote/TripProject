@@ -1,3 +1,3 @@
 # TripProject
 
-[시연영상](https://studio.youtube.com/video/eN6-UtCmGuM/edit)
+[시연영상](https://www.youtube.com/watch?v=eN6-UtCmGuM)
